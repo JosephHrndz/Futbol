@@ -29,13 +29,13 @@ public class ComunDB {
     /*Metodo utilizado para obtener la conexion abierta a un gestor
     de base de datos*/
     public static Connection obtenerConexion() throws SQLException
-    {
-        DriverManager.registerDriver(new 
-        com.microsoft.sqlserver.jdbc.SQLServerDriver());
-        Connection connect = DriverManager.getConnection(
-                connectionURL);
-        return connect;
-    }
+{
+DriverManager.registerDriver(new 
+com.microsoft.sqlserver.jdbc.SQLServerDriver());
+Connection connect = DriverManager.getConnection(
+    connectionURL);
+return connect;
+}
     /*
     el metodo createStatement lo utilizaremos para devolver un 
     statement el cual permite ejecutar una consulta de INSERT,

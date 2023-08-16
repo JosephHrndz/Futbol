@@ -8,6 +8,6 @@ package proyectofutbol.accesoadatos;
  *
  * @author MINEDUCYT
  */
-public class Prueba {
+public class EquiposDAL {
     
 }
