@@ -3,5 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="ProyectoFutbol"/>
+        <group name="Futbol">
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/Liga1DAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoBudesDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/EquiposDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ProyectoFutbolAccesoADatos.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/BundesLigaDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ComunDB.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/PremierLigueDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/FutbolDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/LigasDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoLaLigaDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoSerieADAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/LaLigaDAL.java</file>
+        </group>
     </open-files>
 </project-private>
