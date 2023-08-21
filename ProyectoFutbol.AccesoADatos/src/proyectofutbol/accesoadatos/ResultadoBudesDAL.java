@@ -162,8 +162,51 @@ public class ResultadoBudesDAL {
 
         return resultadobundes;
     }
-
-    /*
+    
+         static void querySelect(ResultadosBundes pResultadosBundes, ComunDB.UtilQuery pUtilQuery) throws Exception
+    {
+        PreparedStatement statement = pUtilQuery.getStatement();
+        if(pResultadosBundes.getId() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.Id = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pResultadosBundes.getId());
+            }
+        }
+        
+        if(pResultadosBundes.getEquipo1() != null && 
+           pResultadosBundes.getEquipo1().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.Equipo1 Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                        "%" + pResultadosBundes.getEquipo1() + "%");
+            }
+        }
+     if(pResultadosBundes.getResultadoDeportes() != null && 
+           pResultadosBundes.getResultadoDeportes().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.ResultadoDeportes Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                  "%" + pResultadosBundes.getResultadoDeportes() + "%");
+            }
+        }
+      if(pResultadosBundes.getEquipo2() != null && 
+           pResultadosBundes.getEquipo2().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.Equipo2 Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                  "%" + pResultadosBundes.getEquipo2() + "%");
+            }
+        }
+    }
     
     public static ArrayList<ResultadosBundes> buscar(ResultadosBundes pResultadosBundes) throws Exception
     {
@@ -196,8 +239,6 @@ public class ResultadoBudesDAL {
             throw ex;
         }
         
-        return resultadobundes;
-    }*/
+        return resultadobundes; 
+    }
 }
-    
-

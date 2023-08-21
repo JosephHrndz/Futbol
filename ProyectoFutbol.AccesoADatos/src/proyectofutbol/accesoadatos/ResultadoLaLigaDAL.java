@@ -161,10 +161,44 @@ public class ResultadoLaLigaDAL {
         return resultadolaliga;
     }
 
+    static void querySelect(ResultadosLaLiga pResultadosLaLiga, ComunDB.UtilQuery pUtilQuery) throws Exception {
+        PreparedStatement statement = pUtilQuery.getStatement();
+        if (pResultadosLaLiga.getId() > 0) {
+            pUtilQuery.AgregarWhereAnd(" r.Id = ? ");
+            if (statement != null) {
+                statement.setInt(pUtilQuery.getNumWhere(),
+                        pResultadosLaLiga.getId());
+            }
+        }
 
+        if (pResultadosLaLiga.getEquipo1() != null
+                && pResultadosLaLiga.getEquipo1().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Equipo1 Like ? ");
+            if (statement != null) {
+                statement.setString(pUtilQuery.getNumWhere(),
+                        "%" + pResultadosLaLiga.getEquipo1() + "%");
+            }
+        }
+        if (pResultadosLaLiga.getResultadoDeportes() != null
+                && pResultadosLaLiga.getResultadoDeportes().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.ResultadoDeportes Like ? ");
+            if (statement != null) {
+                statement.setString(pUtilQuery.getNumWhere(),
+                        "%" + pResultadosLaLiga.getResultadoDeportes() + "%");
+            }
+        }
+        if (pResultadosLaLiga.getEquipo2() != null
+                && pResultadosLaLiga.getEquipo2().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Equipo2 Like ? ");
+            if (statement != null) {
+                statement.setString(pUtilQuery.getNumWhere(),
+                        "%" + pResultadosLaLiga.getEquipo2() + "%");
+            }
+        }
+    }
 
     
-  /*  public static ArrayList<ResultadosLaLiga> buscar(ResultadosLaLiga pResultadosLaLiga) throws Exception
+   public static ArrayList<ResultadosLaLiga> buscar(ResultadosLaLiga pResultadosLaLiga) throws Exception
     {
         ArrayList<ResultadosLaLiga> resultadoslaliga = new ArrayList();
         try(Connection conn = ComunDB.obtenerConexion();)
@@ -196,7 +230,7 @@ public class ResultadoLaLigaDAL {
         }
         
         return resultadoslaliga  ;
-    }*/
+    }
 }
 
     

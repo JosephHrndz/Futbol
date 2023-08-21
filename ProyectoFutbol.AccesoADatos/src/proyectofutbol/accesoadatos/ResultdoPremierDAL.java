@@ -161,7 +161,7 @@ public class ResultdoPremierDAL {
         return resultadopremier;
     }
 
-    /*      static void querySelect(ResultadosPremier pResultadosPremier, ComunDB.UtilQuery pUtilQuery) throws Exception
+         static void querySelect(ResultadosPremier pResultadosPremier, ComunDB.UtilQuery pUtilQuery) throws Exception
     {
         PreparedStatement statement = pUtilQuery.getStatement();
         if(pResultadosPremier.getId() > 0)
@@ -174,14 +174,34 @@ public class ResultdoPremierDAL {
             }
         }
         
-        if(pResultadosPremier.getNombre() != null && 
-           pResultadosPremier.getNombre().trim().isEmpty() == false)
+        if(pResultadosPremier.getEquipo1() != null && 
+           pResultadosPremier.getEquipo1().trim().isEmpty() == false)
         {
-            pUtilQuery.AgregarWhereAnd(" r.Nombre Like ? ");
+            pUtilQuery.AgregarWhereAnd(" r.Equipo1 Like ? ");
             if(statement != null)
             {
                 statement.setString(pUtilQuery.getNumWhere(), 
-                        "%" + pResultadosPremier.getNombre() + "%");
+                        "%" + pResultadosPremier.getEquipo1() + "%");
+            }
+        }
+     if(pResultadosPremier.getResultadoDeportes() != null && 
+           pResultadosPremier.getResultadoDeportes().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.ResultadoDeportes Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                  "%" + pResultadosPremier.getResultadoDeportes() + "%");
+            }
+        }
+      if(pResultadosPremier.getEquipo2() != null && 
+           pResultadosPremier.getEquipo2().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.Equipo2 Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                  "%" + pResultadosPremier.getEquipo2() + "%");
             }
         }
     }
@@ -219,7 +239,7 @@ public class ResultdoPremierDAL {
         }
         
         return resultadospremier  ;
-    }*/
+    }
 }
 
     

@@ -161,9 +161,44 @@ public class ResultadoSerieADAL {
         return resultadoseriea;
     }
 
+    static void querySelect(ResultadosSerieA pResultadosSerieA, ComunDB.UtilQuery pUtilQuery) throws Exception {
+        PreparedStatement statement = pUtilQuery.getStatement();
+        if (pResultadosSerieA.getId() > 0) {
+            pUtilQuery.AgregarWhereAnd(" r.Id = ? ");
+            if (statement != null) {
+                statement.setInt(pUtilQuery.getNumWhere(),
+                        pResultadosSerieA.getId());
+            }
+        }
+
+        if (pResultadosSerieA.getEquipo1() != null
+                && pResultadosSerieA.getEquipo1().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Equipo1 Like ? ");
+            if (statement != null) {
+                statement.setString(pUtilQuery.getNumWhere(),
+                        "%" + pResultadosSerieA.getEquipo1() + "%");
+            }
+        }
+        if (pResultadosSerieA.getResultadoDeportes() != null
+                && pResultadosSerieA.getResultadoDeportes().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.ResultadoDeportes Like ? ");
+            if (statement != null) {
+                statement.setString(pUtilQuery.getNumWhere(),
+                        "%" + pResultadosSerieA.getResultadoDeportes() + "%");
+            }
+        }
+        if (pResultadosSerieA.getEquipo2() != null
+                && pResultadosSerieA.getEquipo2().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Equipo2 Like ? ");
+            if (statement != null) {
+                statement.setString(pUtilQuery.getNumWhere(),
+                        "%" + pResultadosSerieA.getEquipo2() + "%");
+            }
+        }
+    }
 
 
-/* 
+
     public static ArrayList<ResultadosSerieA> buscar(ResultadosSerieA pResultadosSerieA) throws Exception
     {
         ArrayList<ResultadosSerieA> resultadosseriea = new ArrayList();
@@ -196,7 +231,7 @@ public class ResultadoSerieADAL {
         }
         
         return resultadosseriea  ;
-    } */
+    } 
 }
    
     
