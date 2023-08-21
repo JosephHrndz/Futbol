@@ -12,7 +12,9 @@ import  proyectofutbol.entidaddenegocio.Equipos;
 import java.util.*;
 import java.sql.*;
 public class EquiposDAL {
-   static String obtenerCampos()
+  
+
+ static String obtenerCampos()
     {
         return "r.IdEquipos, r.IdLigas, r.NombreEquipo, r.PaisEquipo";
     }       
@@ -296,5 +298,4 @@ public class EquiposDAL {
         
         return equipo;
     }  
-
 }
