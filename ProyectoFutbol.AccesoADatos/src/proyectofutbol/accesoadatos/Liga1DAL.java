@@ -205,7 +205,7 @@ public class Liga1DAL {
         return ligues1;
     }
     
-    /*static void querySelect(Ligue1 pLigue1, ComunDB.UtilQuery pUtilQuery) throws Exception
+static void querySelect(Ligue1 pLigue1, ComunDB.UtilQuery pUtilQuery) throws Exception
     {
         PreparedStatement statement = pUtilQuery.getStatement();
         if(pLigue1.getId() > 0)
@@ -217,17 +217,45 @@ public class Liga1DAL {
                         pLigue1.getId());
             }
         }
-        
-        if(pLigue1.getIdLigas() != null && 
-           pLigue1.getIdLigas().trim().isEmpty() == false)
+         if(pLigue1.getIdLigas() > 0)
         {
-            pUtilQuery.AgregarWhereAnd(" r.Nombre Like ? ");
+            pUtilQuery.AgregarWhereAnd(" l.IdLigas = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pLigue1.getIdLigas());
+            }
+        }
+          if(pLigue1.getPosicion() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.Posicion = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pLigue1.getPosicion());
+            }
+        }
+        
+        if(pLigue1.getEquipo()!= null && 
+           pLigue1.getEquipo().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.Equipo Like ? ");
             if(statement != null)
             {
                 statement.setString(pUtilQuery.getNumWhere(), 
-                        "%" + pLigue1.getIdLigas() + "%");
+                        "%" + pLigue1.getEquipo() + "%");
             }
         }
+         if(pLigue1.getPuntos() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.Puntos = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pLigue1.getPuntos());
+            }
+        }
+    }
            public static ArrayList<Ligue1> buscar(Ligue1 pLigue1) throws Exception
     {
         ArrayList<Ligue1> ligues1 = new ArrayList();
@@ -261,8 +289,9 @@ public class Liga1DAL {
         
         return ligues1;
     }
-           */
+           
 }
+   
     
     
     

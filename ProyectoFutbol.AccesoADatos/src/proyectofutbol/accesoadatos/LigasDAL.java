@@ -197,7 +197,77 @@ public class LigasDAL {
         
         return ligass;
     }
+    static void querySelect(Ligas pLigas, ComunDB.UtilQuery pUtilQuery) throws Exception
+    {
+        PreparedStatement statement = pUtilQuery.getStatement();
+        if(pLigas.getIdLigas() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.IdLigas = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pLigas.getIdLigas());
+            }
+        }
+                if(pLigas.getNombreLiga()!= null && 
+           pLigas.getNombreLiga().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.NombreLiga Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                        "%" + pLigas.getNombreLiga() + "%");
+            }
+        }
+        if(pLigas.getPaisLiga()!= null && 
+           pLigas.getPaisLiga().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.PaisLiga Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                        "%" + pLigas.getPaisLiga() + "%");
+            }
+        }
+           
     
-    
+    }
+           public static ArrayList<Ligas> buscar(Ligas pLigas) throws Exception
+    {
+        ArrayList<Ligas> ligass = new ArrayList();
+        try(Connection conn = ComunDB.obtenerConexion();)
+        {
+            String sql = obtenerSelect(pLigas);
+            ComunDB comundb = new ComunDB();
+            ComunDB.UtilQuery utilQuery = 
+            comundb.new UtilQuery(sql,null,0);
+            querySelect(pLigas, utilQuery);
+            sql = utilQuery.getSQL();
+            sql += agregarOrderBy(pLigas);
+            try(PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);)
+            {
+                utilQuery.setStatement(ps);
+                utilQuery.setSQL(null);
+                utilQuery.setNumWhere(0);
+                querySelect(pLigas, utilQuery);
+                obtenerDatos(ps, ligass);
+                ps.close();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        catch(SQLException ex)
+        {
+            throw ex;
+        }
+        
+        return ligass;
+    }
 }
+
+    
+    
+
 

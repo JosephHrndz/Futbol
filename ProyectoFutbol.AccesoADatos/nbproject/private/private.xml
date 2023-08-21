@@ -2,7 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="ProyectoFutbol"/>
         <group name="Futbol">
             <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/Liga1DAL.java</file>
             <file>file:/C:/Users/MINEDUCYT/Documents/FutbolProject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoBudesDAL.java</file>
@@ -24,6 +23,14 @@
             <file>file:/C:/Users/MINEDUCYT/Downloads/futlbolproject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ComunDB.java</file>
             <file>file:/C:/Users/MINEDUCYT/Downloads/futlbolproject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultdoPremierDAL.java</file>
             <file>file:/C:/Users/MINEDUCYT/Downloads/futlbolproject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoBudesDAL.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/Liga1DAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoBudesDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/LigasDAL.java</file>
+        </group>
+        <group name="ProyectoFutbol">
+            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/PremierLigueDAL.java</file>
         </group>
     </open-files>
 </project-private>

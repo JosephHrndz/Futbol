@@ -202,7 +202,78 @@ public class ResultadoDAL {
         return Resultadoss;
     }
     
+   static void querySelect(Resultados pResultados, ComunDB.UtilQuery pUtilQuery) throws Exception
+    {
+        PreparedStatement statement = pUtilQuery.getStatement();
+        if(pResultados.getId() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.Id = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pResultados.getId());
+            }
+        }
+                if(pResultados.getEquipo1()!= null && 
+           pResultados.getEquipo1().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.Equipo1 Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                        "%" + pResultados.getEquipo1() + "%");
+            }
+        }
+        if(pResultados.getResultadoDeportes()!= null && 
+           pResultados.getResultadoDeportes().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" r.ResultadoDeportes Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                        "%" + pResultados.getResultadoDeportes() + "%");
+            }
+        }
+           
     
+    }
+           public static ArrayList<Resultados> buscar(Resultados pResultados) throws Exception
+    {
+        ArrayList<Resultados> resultadoss = new ArrayList();
+        try(Connection conn = ComunDB.obtenerConexion();)
+        {
+            String sql = obtenerSelect(pResultados);
+            ComunDB comundb = new ComunDB();
+            ComunDB.UtilQuery utilQuery = 
+            comundb.new UtilQuery(sql,null,0);
+            querySelect(pResultados, utilQuery);
+            sql = utilQuery.getSQL();
+            sql += agregarOrderBy(pResultados);
+            try(PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);)
+            {
+                utilQuery.setStatement(ps);
+                utilQuery.setSQL(null);
+                utilQuery.setNumWhere(0);
+                querySelect(pResultados, utilQuery);
+                obtenerDatos(ps, resultadoss);
+                ps.close();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        catch(SQLException ex)
+        {
+            throw ex;
+        }
+        
+        return resultadoss;
+    }
 }
+
+    
+   
+
 
 

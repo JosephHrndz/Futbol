@@ -205,5 +205,91 @@ public class PremierLigueDAL {
         return PremierLigues;
     
 }
+    static void querySelect(PremierLigue pPremierLigue, ComunDB.UtilQuery pUtilQuery) throws Exception
+    {
+        PreparedStatement statement = pUtilQuery.getStatement();
+        if(pPremierLigue.getId() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.Id = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pPremierLigue.getId());
+            }
+        }
+         if(pPremierLigue.getIdLigas() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.IdLigas = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pPremierLigue.getIdLigas());
+            }
+        }
+          if(pPremierLigue.getPosicion() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.Posicion = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pPremierLigue.getPosicion());
+            }
+        }
+        
+        if(pPremierLigue.getEquipo()!= null && 
+           pPremierLigue.getEquipo().trim().isEmpty() == false)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.Equipo Like ? ");
+            if(statement != null)
+            {
+                statement.setString(pUtilQuery.getNumWhere(), 
+                        "%" + pPremierLigue.getEquipo() + "%");
+            }
+        }
+         if(pPremierLigue.getPuntos() > 0)
+        {
+            pUtilQuery.AgregarWhereAnd(" l.Puntos = ? ");
+            if(statement != null)
+            {
+                statement.setInt(pUtilQuery.getNumWhere(), 
+                        pPremierLigue.getPuntos());
+            }
+        }
+    }
+           public static ArrayList<PremierLigue> buscar(PremierLigue pPremierLigue) throws Exception
+    {
+        ArrayList<PremierLigue> PremierLigues = new ArrayList();
+        try(Connection conn = ComunDB.obtenerConexion();)
+        {
+            String sql = obtenerSelect(pPremierLigue);
+            ComunDB comundb = new ComunDB();
+            ComunDB.UtilQuery utilQuery = 
+            comundb.new UtilQuery(sql,null,0);
+            querySelect(pPremierLigue, utilQuery);
+            sql = utilQuery.getSQL();
+            sql += agregarOrderBy(pPremierLigue);
+            try(PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);)
+            {
+                utilQuery.setStatement(ps);
+                utilQuery.setSQL(null);
+                utilQuery.setNumWhere(0);
+                querySelect(pPremierLigue, utilQuery);
+                obtenerDatos(ps, PremierLigues);
+                ps.close();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        catch(SQLException ex)
+        {
+            throw ex;
+        }
+        
+        return PremierLigues;
+    }
 }
+
+
 
