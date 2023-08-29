@@ -12,11 +12,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.util.ArrayList;
+import proyectofutbol.accesoadatos.ResultadoDAL;
+import proyectofutbol.entidaddenegocio.Resultados;
+import ProyectoFutbol.Web.Utils.*;
+
 /**
  *
  * @author MINEDUCYT
  */
-@WebServlet(name = "ResultadoServlet", urlPatterns = {"/ResultadoServlet"})
+@WebServlet(name = "ResultadoServlet", urlPatterns = {"/Resultado"})
 public class ResultadoServlet extends HttpServlet {
 
     /**
@@ -28,23 +33,204 @@ public class ResultadoServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     private Resultados obtenerResultados(HttpServletRequest request)
+    {
+        String accion = Utilidad.getParameter(request, "accion", "index");
+        Resultados resultados = new Resultados();
+        if(accion.equals("create") == false)
+        {
+            //Obtiene el parametro de Id del request y asigna el valor a la propiedad 
+            //Id de la instancia
+            resultados.setId(Integer.parseInt(Utilidad.getParameter(request, "id",
+                    "0")));
+        }
+        resultados.setEquipo1(Utilidad.getParameter(request, "Equipo1", ""));
+        if(accion.equals("index"))
+        {
+            resultados.setTop_aux(Integer.parseInt(Utilidad.getParameter(request, 
+                    "top_aux", "10")));
+            resultados.setTop_aux(resultados.getTop_aux() == 0 ? Integer.MAX_VALUE: resultados.getTop_aux());
+        }
+          resultados.setResultadoDeportes(Utilidad.getParameter(request, "ResultadoDeportes", ""));
+        if(accion.equals("index"))
+        {
+            resultados.setTop_aux(Integer.parseInt(Utilidad.getParameter(request, 
+                    "top_aux", "10")));
+            resultados.setTop_aux(resultados.getTop_aux() == 0 ? Integer.MAX_VALUE: resultados.getTop_aux());
+        }
+                  resultados.setEquipo2(Utilidad.getParameter(request, "Equipo2", ""));
+        if(accion.equals("index"))
+        {
+            resultados.setTop_aux(Integer.parseInt(Utilidad.getParameter(request, 
+                    "top_aux", "10")));
+            resultados.setTop_aux(resultados.getTop_aux() == 0 ? Integer.MAX_VALUE: resultados.getTop_aux());
+        }
+        return resultados;
+    }
+     
+     
+        protected void doGetRequestIndex(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ResultadoServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ResultadoServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try
+        {
+            Resultados resultados = new Resultados();
+            resultados.setTop_aux(10);
+            ArrayList<Resultados> resultadoss = ResultadoDAL.buscar(resultados);
+            request.setAttribute("resultados", resultados);
+            request.setAttribute("top_aux", resultados.getTop_aux());
+            request.getRequestDispatcher("Views/Resultados/index.jsp")
+                    .forward(request, response);
+        }
+        catch(Exception ex)
+        {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+        
+            protected void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try
+        {
+            Resultados resultados = obtenerResultados(request);
+            ArrayList<Resultados> resultadoss = ResultadoDAL.buscar(resultados);
+            request.setAttribute("resultadospremier", resultados);
+
+            request.setAttribute("top_aux", resultados.getTop_aux());
+
+            request.setAttribute("top_aux",resultados.getTop_aux());
+
+            request.getRequestDispatcher("Views/Resultado/index.jsp")
+                    .forward(request, response);
+        }
+        catch(Exception ex)
+        {
+            Utilidad.enviarError(ex.getMessage(), request, response);
         }
     }
 
+    protected void doGetRequestCreate(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("Views/Resultado/create.jsp")
+                .forward(request, response);
+    }
+    
+    
+       protected void doPostRequestCreate(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try
+        {
+            Resultados resultados = obtenerResultados(request);
+            int result = ResultadoDAL.crear(resultados );
+            if(result != 0)
+            {
+                request.setAttribute("accion", "index");
+                doGetRequestIndex(request, response);
+            }
+            else
+            {
+                Utilidad.enviarError("Error al Guardar el Regisgtro", request, response);
+            }
+
+        }
+        catch(Exception ex)
+        {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+
+       
+       
+    protected void requestObtenerPorId(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try
+        {
+            Resultados resultadospremier = obtenerResultados(request);
+            Resultados resultadoss_result = ResultadoDAL.obtenerPorId(resultadospremier);
+            if(resultadoss_result.getId() > 0)
+            {
+                request.setAttribute("rol", resultadoss_result);
+            }
+            else
+            {
+                Utilidad.enviarError("El id: " + resultadospremier.getId() + " no existe en la tabla resultados", 
+                        request, response);
+            }
+        }
+        catch(Exception ex)
+        {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+    
+      protected void doGetRequestEdit(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            requestObtenerPorId(request, response);
+            request.getRequestDispatcher("Views/Resultados/edit.jsp")
+                    .forward(request, response);
+    }
+      
+        protected void doPostRequestEdit(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try
+        {
+            Resultados resultados = obtenerResultados(request);
+            int result = ResultadoDAL.modificar(resultados);
+            if(result != 0)
+            {
+                request.setAttribute("accion", "index");
+                doGetRequestIndex(request, response);
+            }
+            else
+            {
+                Utilidad.enviarError("Error al Guardar el Regisgtro", request, response);
+            }
+
+        }
+        catch(Exception ex)
+        {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+        
+        
+           protected void doGetRequestDetails(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            requestObtenerPorId(request, response);
+            request.getRequestDispatcher("Views/Resultados/details.jsp")
+                    .forward(request, response);
+    }
+    
+    protected void doGetRequestDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            requestObtenerPorId(request, response);
+            request.getRequestDispatcher("Views/Resultados/delete.jsp")
+                    .forward(request, response);
+    }
+    
+    
+      protected void doPostRequestDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try
+        {
+            Resultados resultados= obtenerResultados(request);
+            int result = ResultadoDAL.eliminar(resultados);
+            if(result != 0)
+            {
+                request.setAttribute("accion", "index");
+                doGetRequestIndex(request, response);
+            }
+            else
+            {
+                Utilidad.enviarError("Error al Guardar el Regisgtro", request, response);
+            }
+
+        }
+        catch(Exception ex)
+        {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -57,8 +243,39 @@ public class ResultadoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        SessionUser.authorize(request, response, () -> {
+            String accion = Utilidad.getParameter(request, 
+                    "accion", "index");
+            switch(accion)
+            {
+                case "index":
+                    request.setAttribute("accion", accion);
+                    doGetRequestIndex(request, response);
+                    break;
+                case "create":
+                    request.setAttribute("accion", accion);
+                    doGetRequestCreate(request, response);
+                    break;
+                case "edit":
+                    request.setAttribute("accion", accion);
+                    doGetRequestEdit(request, response);
+                    break;
+                case "delete":
+                    request.setAttribute("accion", accion);
+                    doGetRequestDelete(request, response);
+                    break;
+                case "details":
+                    request.setAttribute("accion", accion);
+                    doGetRequestDetails(request, response);
+                    break;
+                default:
+                    request.setAttribute("accion", accion);
+                    doGetRequestIndex(request, response);
+                    break;
+            }
+        });
     }
+
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -69,19 +286,35 @@ public class ResultadoServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+ protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        //SessionUser.authorize(request, response, () -> {
+            String accion = Utilidad.getParameter(request, 
+                    "accion", "index");
+            switch(accion)
+            {
+                case "index":
+                    request.setAttribute("accion", accion);
+                    doPostRequestIndex(request, response);
+                    break;
+                case "create":
+                    request.setAttribute("accion", accion);
+                    doPostRequestCreate(request, response);
+                    break;
+                case "edit":
+                    request.setAttribute("accion", accion);
+                    doPostRequestEdit(request, response);
+                    break;
+                case "delete":
+                    request.setAttribute("accion", accion);
+                    doPostRequestDelete(request, response);
+                    break;
+                default:
+                    request.setAttribute("accion", accion);
+                    doGetRequestIndex(request, response);
+                    break;
+            }
+        //});
+ }
 
 }
