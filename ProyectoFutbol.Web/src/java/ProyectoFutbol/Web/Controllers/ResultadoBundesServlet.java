@@ -21,7 +21,7 @@ import ProyectoFutbol.Web.Utils.*;
  *
  * @author MINEDUCYT
  */
-@WebServlet(name = "ResultadoBundesServlet", urlPatterns = {"/ResultadoBundesServlet"})
+@WebServlet(name = "ResultadoBundesServlet", urlPatterns = {"/ResultadosBundes"})
 public class ResultadoBundesServlet extends HttpServlet {
 
     /**
@@ -33,20 +33,156 @@ public class ResultadoBundesServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    private ResultadosBundes obtenerResultadosBundes(HttpServletRequest request) {
+        String accion = Utilidad.getParameter(request, "accion", "index");
+        ResultadosBundes resultadosbundes = new ResultadosBundes();
+        if (accion.equals("create") == false) {
+            //Obtiene el parametro de Id del request y asigna el valor a la propiedad 
+            //Id de la instancia
+            resultadosbundes.setId(Integer.parseInt(Utilidad.getParameter(request, "id",
+                    "0")));
+        }
+        resultadosbundes.setEquipo1(Utilidad.getParameter(request, "Equipo1", ""));
+        if (accion.equals("index")) {
+            resultadosbundes.setTop_aux(Integer.parseInt(Utilidad.getParameter(request,
+                    "top_aux", "10")));
+            resultadosbundes.setTop_aux(resultadosbundes.getTop_aux() == 0 ? Integer.MAX_VALUE : resultadosbundes.getTop_aux());
+        }
+        resultadosbundes.setResultadoDeportes(Utilidad.getParameter(request, "ResultadoDeportes", ""));
+        if (accion.equals("index")) {
+            resultadosbundes.setTop_aux(Integer.parseInt(Utilidad.getParameter(request,
+                    "top_aux", "10")));
+            resultadosbundes.setTop_aux(resultadosbundes.getTop_aux() == 0 ? Integer.MAX_VALUE : resultadosbundes.getTop_aux());
+        }
+        resultadosbundes.setEquipo2(Utilidad.getParameter(request, "Equipo2", ""));
+        if (accion.equals("index")) {
+            resultadosbundes.setTop_aux(Integer.parseInt(Utilidad.getParameter(request,
+                    "top_aux", "10")));
+            resultadosbundes.setTop_aux(resultadosbundes.getTop_aux() == 0 ? Integer.MAX_VALUE : resultadosbundes.getTop_aux());
+        }
+        return resultadosbundes;
+    }
+
+    protected void doGetRequestIndex(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ResultadoBundesServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ResultadoBundesServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try {
+            ResultadosBundes resultadosbundes = new ResultadosBundes();
+            resultadosbundes.setTop_aux(10);
+            ArrayList<ResultadosBundes> resultadobundes = ResultadoBudesDAL.buscar(resultadosbundes);
+            request.setAttribute("resultadoslaliga", resultadosbundes);
+            request.setAttribute("top_aux", resultadosbundes.getTop_aux());
+            request.getRequestDispatcher("Views/ResultadosBundes/index.jsp")
+                    .forward(request, response);
+        } catch (Exception ex) {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+
+    protected void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            ResultadosBundes resultadosbundes = obtenerResultadosBundes(request);
+            ArrayList<ResultadosBundes> resultadobundes = ResultadoBudesDAL.buscar(resultadosbundes);
+            request.setAttribute("resultadosbundes", resultadosbundes);
+            request.setAttribute("top_aux", resultadosbundes.getTop_aux());
+            request.getRequestDispatcher("Views/ResultadosBundes/index.jsp")
+                    .forward(request, response);
+        } catch (Exception ex) {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+
+    protected void doGetRequestCreate(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("Views/ResultadosBundes/create.jsp")
+                .forward(request, response);
+    }
+
+    protected void doPostRequestCreate(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            ResultadosBundes resultadosbundes = obtenerResultadosBundes(request);
+            int result = ResultadoBudesDAL.crear(resultadosbundes);
+            if (result != 0) {
+                request.setAttribute("accion", "index");
+                doGetRequestIndex(request, response);
+            } else {
+                Utilidad.enviarError("Error al Guardar el Regisgtro", request, response);
+            }
+
+        } catch (Exception ex) {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+
+    protected void requestObtenerPorId(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            ResultadosBundes resultadosbundes = obtenerResultadosBundes(request);
+            ResultadosBundes resultadosbundes_result = ResultadoBudesDAL.obtenerPorId(resultadosbundes);
+            if (resultadosbundes_result.getId() > 0) {
+                request.setAttribute("resultadosbundes", resultadosbundes_result);
+            } else {
+                Utilidad.enviarError("El id: " + resultadosbundes.getId() + " no existe en la tabla resultadosbundes",
+                        request, response);
+            }
+        } catch (Exception ex) {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+
+    protected void doGetRequestEdit(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        requestObtenerPorId(request, response);
+        request.getRequestDispatcher("Views/ResultadosBundes/edit.jsp")
+                .forward(request, response);
+    }
+
+    protected void doPostRequestEdit(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            ResultadosBundes resultadosbundes = obtenerResultadosBundes(request);
+            int result = ResultadoBudesDAL.modificar(resultadosbundes);
+            if (result != 0) {
+                request.setAttribute("accion", "index");
+                doGetRequestIndex(request, response);
+            } else {
+                Utilidad.enviarError("Error al Guardar el Regisgtro", request, response);
+            }
+
+        } catch (Exception ex) {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+
+    protected void doGetRequestDetails(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        requestObtenerPorId(request, response);
+        request.getRequestDispatcher("Views/ResultadosBundes/details.jsp")
+                .forward(request, response);
+    }
+
+    protected void doGetRequestDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        requestObtenerPorId(request, response);
+        request.getRequestDispatcher("Views/ResultadosBundes/delete.jsp")
+                .forward(request, response);
+    }
+
+    protected void doPostRequestDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            ResultadosBundes resultadosbundes = obtenerResultadosBundes(request);
+            int result = ResultadoBudesDAL.eliminar(resultadosbundes);
+            if (result != 0) {
+                request.setAttribute("accion", "index");
+                doGetRequestIndex(request, response);
+            } else {
+                Utilidad.enviarError("Error al Guardar el Regisgtro", request, response);
+            }
+
+        } catch (Exception ex) {
+            Utilidad.enviarError(ex.getMessage(), request, response);
         }
     }
 
@@ -62,7 +198,36 @@ public class ResultadoBundesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        SessionUser.authorize(request, response, () -> {
+            String accion = Utilidad.getParameter(request,
+                    "accion", "index");
+            switch (accion) {
+                case "index":
+                    request.setAttribute("accion", accion);
+                    doGetRequestIndex(request, response);
+                    break;
+                case "create":
+                    request.setAttribute("accion", accion);
+                    doGetRequestCreate(request, response);
+                    break;
+                case "edit":
+                    request.setAttribute("accion", accion);
+                    doGetRequestEdit(request, response);
+                    break;
+                case "delete":
+                    request.setAttribute("accion", accion);
+                    doGetRequestDelete(request, response);
+                    break;
+                case "details":
+                    request.setAttribute("accion", accion);
+                    doGetRequestDetails(request, response);
+                    break;
+                default:
+                    request.setAttribute("accion", accion);
+                    doGetRequestIndex(request, response);
+                    break;
+            }
+        });
     }
 
     /**
@@ -76,17 +241,32 @@ public class ResultadoBundesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //SessionUser.authorize(request, response, () -> {
+        String accion = Utilidad.getParameter(request,
+                "accion", "index");
+        switch (accion) {
+            case "index":
+                request.setAttribute("accion", accion);
+                doPostRequestIndex(request, response);
+                break;
+            case "create":
+                request.setAttribute("accion", accion);
+                doPostRequestCreate(request, response);
+                break;
+            case "edit":
+                request.setAttribute("accion", accion);
+                doPostRequestEdit(request, response);
+                break;
+            case "delete":
+                request.setAttribute("accion", accion);
+                doPostRequestDelete(request, response);
+                break;
+            default:
+                request.setAttribute("accion", accion);
+                doGetRequestIndex(request, response);
+                break;
+        }
+        //});
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
