@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import proyectofutbol.accesoadatos.ResultdoPremierDAL;
 import proyectofutbol.entidaddenegocio.ResultadosPremier;
-import ProyectoFutbol.Web.utils.*;
+import ProyectoFutbol.Web.Utils.*;
 
 /**
  *
@@ -77,7 +77,7 @@ public class ResultadoPremierServlet extends HttpServlet {
             resultadospremier.setTop_aux(10);
             ArrayList<ResultadosPremier> resultadopremier = ResultdoPremierDAL.buscar(resultadospremier);
             request.setAttribute("resultadospremier", resultadospremier);
-            request.setAttribute("top_aux", resultadopremier.getTop_aux());
+            request.setAttribute("top_aux", resultadospremier.getTop_aux());
             request.getRequestDispatcher("Views/ResultadoPremier/index.jsp")
                     .forward(request, response);
         }
@@ -94,7 +94,7 @@ public class ResultadoPremierServlet extends HttpServlet {
             ResultadosPremier resultadospremier = obtenerResultadosPremier(request);
             ArrayList<ResultadosPremier> resultadopremier = ResultdoPremierDAL.buscar(resultadospremier);
             request.setAttribute("resultadospremier", resultadospremier);
-            request.setAttribute("top_aux", resultadopremier.getTop_aux());
+            request.setAttribute("top_aux", resultadospremier.getTop_aux());
             request.getRequestDispatcher("Views/ResultadoPremier/index.jsp")
                     .forward(request, response);
         }
