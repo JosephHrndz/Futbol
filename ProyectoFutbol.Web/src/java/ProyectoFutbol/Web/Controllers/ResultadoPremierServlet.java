@@ -94,7 +94,11 @@ public class ResultadoPremierServlet extends HttpServlet {
             ResultadosPremier resultadospremier = obtenerResultadosPremier(request);
             ArrayList<ResultadosPremier> resultadopremier = ResultdoPremierDAL.buscar(resultadospremier);
             request.setAttribute("resultadospremier", resultadospremier);
+
             request.setAttribute("top_aux", resultadospremier.getTop_aux());
+
+            request.setAttribute("top_aux",resultadospremier.getTop_aux());
+
             request.getRequestDispatcher("Views/ResultadoPremier/index.jsp")
                     .forward(request, response);
         }
