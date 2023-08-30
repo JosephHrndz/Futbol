@@ -20,7 +20,7 @@ public class ComunDB {
     //propiedad del SGBD que estamos utilizando
     static int TIPODB = TipoDB.SQLSERVER;
     static String connectionURL = "jdbc:sqlserver://localhost:1433;"
-            + "database=DbPracticaG01;"
+            + "database= FUTBOL;"
             + "user=sa;"
             + "password=Vanessa0820@1989;"
             + "loginTimeout=30;encrypt=false;trustServerCertificate=false";
