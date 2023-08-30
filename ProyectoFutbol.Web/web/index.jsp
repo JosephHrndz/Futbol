@@ -6,9 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="ProyectoFutbol.Web.Utils.*"%>
-<% if (SessionUser.isAuth(request) == false) {
-         response.sendRedirect("Usuario?accion=login");
-    }
+<% //if (SessionUser.isAuth(request) == false) {
+        // response.sendRedirect("Usuario?accion=login");
+    //}
 %>
 <!DOCTYPE html>
 <html>
