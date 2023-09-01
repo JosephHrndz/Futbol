@@ -206,6 +206,12 @@ public class UsuarioServlet extends HttpServlet {
             doGetRequestLogin(request, response);
         }
         else
+            if(accion.equals("create"))
+            {
+                 request.setAttribute("accion", accion);
+                 doGetRequestCreate(request, response);
+            }
+        else
         {
             SessionUser.authorize(request, response, () -> {
                 switch(accion)
@@ -214,10 +220,7 @@ public class UsuarioServlet extends HttpServlet {
                         request.setAttribute("accion", accion);
                         doGetRequestIndex(request,response);
                         break;
-                    case "create":
-                        request.setAttribute("accion", accion);
-                        doGetRequestCreate(request,response);
-                        break;
+                    
                 }
             });
         }
@@ -242,6 +245,13 @@ public class UsuarioServlet extends HttpServlet {
             doPostRequestLogin(request, response);
         }
         else
+            if(accion.equals("create"))
+            {
+                 request.setAttribute("accion", accion);
+                 doPostRequestCreate(request, response);
+            }
+
+        else
         {
             SessionUser.authorize(request, response, () -> {
                 switch(accion)
@@ -250,10 +260,7 @@ public class UsuarioServlet extends HttpServlet {
                         request.setAttribute("accion", accion);
                         doPostRequestIndex(request,response);
                         break;
-                    case "create":
-                        request.setAttribute("accion", accion);
-                        doPostRequestCreate(request,response);
-                        break;
+                    
                 }
             });
         }

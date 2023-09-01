@@ -8,23 +8,21 @@
 <%@page import="ProyectoFutbol.Web.Utils.*"%>
 <nav>
     <div class="nav-wrapper blue">
-        <a href="Home" class="brand-logo">SysSeguridad</a>
+        <a href="Home" class="brand-logo">THe FOotBaLL Net </a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>       
         <ul class="right hide-on-med-and-down">  
-            <% if (SessionUser.isAuth(request)) {  %> 
-            <li><a href="Home">Inicio</a></li>
-            <li><a href="Usuario">Usuario</a></li>
-            <li><a href="Rol">Rol</a></li>
-            <li><a href="Usuario?accion=cambiarpass">Cambiar password</a></li>
-            <li><a href="Usuario?accion=login">Cerrar sesión</a></li>
+           <% if (SessionUser.isAuth(request)) {  %>
+    <li><a href="Home">Inicio</a></li>
+    <li><a href="Usuario">Ligas</a></li>
+    <li><a href="Rol">Mas</a></li>
+    <li><a href="Usuario?accion=cambiarpass">Usuario</a></li>
             <%}
              else
                 {%>
          <li><a href="Home">Inicio</a></li>
-            <li><a href="Usuario">Usuario</a></li>
-            <li><a href="Rol">Rol</a></li>
-            <li><a href="Usuario?accion=cambiarpass">Cambiar password</a></li>
-            <li><a href="Usuario?accion=login">Cerrar sesión</a></li>
+            <li><a href="Usuario?accion=create">Ligas</a></li>
+            <li><a href="Rol">Usuario</a></li>
+          
             
               <%}%>
         </ul>
@@ -35,10 +33,10 @@
 <ul class="sidenav" id="mobile-demo">
     <% if (SessionUser.isAuth(request)) {  %>
     <li><a href="Home">Inicio</a></li>
-    <li><a href="Usuario">Usuario</a></li>
-    <li><a href="Rol">Rol</a></li>
-    <li><a href="Usuario?accion=cambiarpass">Cambiar password</a></li>
-    <li><a href="Usuario?accion=login">Cerrar sesión</a></li>
+    <li><a href="Usuario">Ligas</a></li>
+    <li><a href="Rol">Mas</a></li>
+    <li><a href="Usuario?accion=cambiarpass">Usuario</a></li>
+ 
     <%}%>
 </ul>
 
