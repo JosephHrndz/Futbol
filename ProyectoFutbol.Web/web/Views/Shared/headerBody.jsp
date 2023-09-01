@@ -13,14 +13,14 @@
         <ul class="right hide-on-med-and-down">  
            <% if (SessionUser.isAuth(request)) {  %>
     <li><a href="Home">Inicio</a></li>
-    <li><a href="Usuario">Ligas</a></li>
+    <li><a href="Ligas">Ligas</a></li>
     <li><a href="Rol">Mas</a></li>
     <li><a href="Usuario?accion=cambiarpass">Usuario</a></li>
             <%}
              else
                 {%>
          <li><a href="Home">Inicio</a></li>
-            <li><a href="Usuario?accion=create">Ligas</a></li>
+            <li><a href="Ligas">Ligas</a></li>
             <li><a href="Rol">Usuario</a></li>
           
             

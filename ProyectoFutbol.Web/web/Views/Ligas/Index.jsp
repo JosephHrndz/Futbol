@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Ligas
-    Created on : 30 ago 2023, 8:37:45
+    Document   : Index
+    Created on : 31 ago 2023, 8:14:51
     Author     : MINEDUCYT
 --%>
 
@@ -9,16 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ligas</title>
+        <title>Ligas</title>
     </head>
     <body>
-        <h1>bienvenido aqui esta tu vista fovorita</h1>
-
-
-        <div class="galeria">
+        <h1>BIENVENIDOS A SU VISTA FAVORITA</h1>
+        
+          <div class="galeria">
             <div class="imagenes">
-                <a href="~pendiente">
-                    <img src="peniente">
+                <a href="~/Ligue1/Index">
+                    <img src="~/img/LIGUE1.png">
                 </a>
                 <div class="pie">
                     <p>LIGA 1</p>
@@ -140,5 +139,6 @@
 
             </style>
 
+    
     </body>
 </html>
