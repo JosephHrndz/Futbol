@@ -21,8 +21,8 @@ public class ComunDB {
     static int TIPODB = TipoDB.SQLSERVER;
     static String connectionURL = "jdbc:sqlserver://localhost:1433;"
             + "database=FUTBOL;"
-            + "user=Joseph;"
-            + "password=JOSEPH2003;"
+            + "user=denise;"
+            + "password=ALBERTHO23;"
             + "loginTimeout=30;encrypt=false;trustServerCertificate=false";
             //+ "integratedSecurity=true";
     

@@ -12,92 +12,81 @@
         <title>Ligas</title>
     </head>
     <body>
-        <h1>BIENVENIDOS A SU VISTA FAVORITA</h1>
+        <h1>¡Explora nuestras ligas y descubre todo lo que el mundo del fútbol tiene para ofrecer!</h1>
         
           <div class="galeria">
             <div class="imagenes">
                 <a href="/Ligue1/Index">
                     <img src="wwwroot/images/LIGUE1.png">
                 </a>
+            </div>
                 <div class="pie">
-                    <p>LIGA 1</p>
+   
                     <p>LIGUE1</p>
 
                 </div>
 
             </div>
 
-
-
-
-            <div class="galeria">
-                <div class="imagenes">
-                    <a href="/SerireA/Index">
-                        <img src="wwwroot/images/SERIEA.png" alt="">
-                    </a>
-
-                </div>
-
+              
+              <div class="galeria">
+            <div class="imagenes">
+                <a href="/SerireA/Index">
+                    <img src="wwwroot/images/SERIEA.png">
+                </a>
+            </div>
                 <div class="pie">
+   
                     <p>SERIE A</p>
 
                 </div>
+
             </div>
 
 
 
-
-            <div class="galeria">
-                <div class="imagenes">
-                    <a href="/LaLiga/Index">
-                        <img src="wwwroot/images/laliga.png" alt="">
-                    </a>
-
-                </div>
-
+               <div class="galeria">
+            <div class="imagenes">
+                <a href="/BundesLiga/Index">
+                    <img src="wwwroot/images/bundes.png">
+                </a>
+            </div>
                 <div class="pie">
-                    <p>LIGA 3</p>
-                    <p>LALIGA</p>
+   
+                    <p>BUNDESLIGA</p>
 
                 </div>
+
             </div>
 
-
-
-
-            <div class="galeria">
-                <div class="imagenes">
-                    <a href="/BundesLiga/index">
-                        <img src="wwwroot/images/BUNDESLIGA.png" alt="">
-                    </a>
-
-                </div>
-
+        
+              <div class="galeria">
+            <div class="imagenes">
+                <a href="/LaLiga/Index">
+                    <img src="wwwroot/images/laliga.png">
+                </a>
+            </div>
                 <div class="pie">
-                    <p>LIGA 4</p>
-                    <p>BUNDESLIGA<p>
+   
+                    <p>LA LIGA</p>
 
                 </div>
+
             </div>
 
-
-            <div class="galeria">
-                <div class="imagenes">
-                    <a href="/PremierLigue/Index">
-                        <img src="wwwroot/images/PREMIER.png" alt="">
-                    </a>
-
-                </div>
-
+      <div class="galeria">
+            <div class="imagenes">
+                <a href="/PremierLigue/Index">
+                    <img src="wwwroot/images/PREMIER.png">
+                </a>
+            </div>
                 <div class="pie">
-                    <p>LIGA 5</p>
-                    <p>PREMIERLEAGUE<p>
+   
+                    <p>PREMIER LIGUE</p>
 
                 </div>
+
             </div>
-
-
-
 
             <style>
                 h1 {
@@ -134,8 +123,7 @@
                     padding: 10px;
                 }
 
-                body {
-                }
+            
 
             </style>
 

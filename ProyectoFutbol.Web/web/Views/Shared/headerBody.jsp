@@ -32,12 +32,14 @@
         
     </div>
 </nav>
+        
+      
 
 <ul class="sidenav" id="mobile-demo">
     <% if (SessionUser.isAuth(request)) {  %>
     <div class="#000000 negro">
     <li><a href="Home">Inicio</a></li>
-    <li><a href="Usuario">Ligas</a></li>
+    <li><a href="Ligas">Ligas</a></li>
     <li><a href="Carrusel?accion=index">Mas</a></li>
     <li><a href="Usuario?accion=cambiarpass">Usuario</a></li>
  </div>

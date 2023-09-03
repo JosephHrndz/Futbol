@@ -15,9 +15,6 @@
             <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ComunDB.java</file>
             <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/UsuarioDAL.java</file>
         </group>
-        <group name="Futbol">
-            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ComunDB.java</file>
-            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/LigasDAL.java</file>
-        </group>
+        <group name="Futbol"/>
     </open-files>
 </project-private>
