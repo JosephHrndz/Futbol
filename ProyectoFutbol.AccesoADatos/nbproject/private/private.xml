@@ -9,12 +9,15 @@
             <file>file:/C:/Users/MINEDUCYT/Downloads/futlbolproject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultdoPremierDAL.java</file>
             <file>file:/C:/Users/MINEDUCYT/Downloads/futlbolproject/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoBudesDAL.java</file>
         </group>
+        <group name="ProyectoFutbol"/>
         <group>
-            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/Liga1DAL.java</file>
-            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ResultadoBudesDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/LigasDAL.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ComunDB.java</file>
+            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/UsuarioDAL.java</file>
+        </group>
+        <group name="Futbol">
+            <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/ComunDB.java</file>
             <file>file:/C:/Users/MINEDUCYT/Documents/Futbol/Futbol/ProyectoFutbol.AccesoADatos/src/proyectofutbol/accesoadatos/LigasDAL.java</file>
         </group>
-        <group name="ProyectoFutbol"/>
-        <group name="Futbol"/>
     </open-files>
 </project-private>

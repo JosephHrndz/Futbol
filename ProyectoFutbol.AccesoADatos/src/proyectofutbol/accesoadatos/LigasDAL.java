@@ -30,7 +30,7 @@ public class LigasDAL {
     } 
        private static String agregarOrderBy(Ligas pLigas)
     {
-        String sql = " Order by r.Id Desc";
+        String sql = " Order by l.IdLigas Desc";
         if(pLigas.getTop_aux() > 0 && 
         ComunDB.TIPODB == ComunDB.TipoDB.MYSQL)
         {
@@ -70,7 +70,7 @@ public class LigasDAL {
         String sql;
         try(Connection conn = ComunDB.obtenerConexion();)
         {
-            sql = "Update Ligas Set nombreLigas = ? Where Id = ?";
+            sql = "Update Ligas Set nombreLigas = ? Where IdLigas = ?";
             try(PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);)
             {
                 ps.setString(1,pLigas.getNombreLiga());
@@ -96,7 +96,7 @@ public class LigasDAL {
         String sql;
         try(Connection conn = ComunDB.obtenerConexion();)
         {
-            sql = "Delete From Ligas Where Id = ?";
+            sql = "Delete From Ligas Where IdLigas = ?";
             try(PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);)
             {
                 ps.setInt(1, pLigas.getIdLigas());
@@ -149,7 +149,7 @@ public class LigasDAL {
         try(Connection conn = ComunDB.obtenerConexion();)
         {
             String sql = obtenerSelect(pLigas);
-            sql += " Where Id = ?";
+            sql += " Where IdLigas = ?";
             try(PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);)
             {
                 ps.setInt(1, pLigas.getIdLigas());

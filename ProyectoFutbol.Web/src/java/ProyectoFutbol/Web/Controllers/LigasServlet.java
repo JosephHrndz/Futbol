@@ -82,7 +82,7 @@ public class LigasServlet extends HttpServlet {
             ArrayList<Ligas> ligass = LigasDAL.buscar(ligas);
             request.setAttribute("ligass", ligass);
             request.setAttribute("top_aux", ligas.getTop_aux());
-            request.getRequestDispatcher("Views/ligas/index.jsp")
+            request.getRequestDispatcher("Views/Ligas/Index.jsp")
                     .forward(request, response);
         }
         catch(Exception ex)
@@ -98,7 +98,7 @@ public class LigasServlet extends HttpServlet {
             ArrayList<Ligas> ligass = LigasDAL.buscar(ligas);
             request.setAttribute("ligass", ligass);
             request.setAttribute("top_aux", ligas.getTop_aux());
-            request.getRequestDispatcher("Views/ligas/index.jsp")
+            request.getRequestDispatcher("Views/Ligas/Index.jsp")
                     .forward(request, response);
         }
         catch(Exception ex)

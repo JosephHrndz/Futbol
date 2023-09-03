@@ -16,8 +16,8 @@
         
           <div class="galeria">
             <div class="imagenes">
-                <a href="~/Ligue1/Index">
-                    <img src="~/img/LIGUE1.png">
+                <a href="/Ligue1/Index">
+                    <img src="wwwroot/images/LIGUE1.png">
                 </a>
                 <div class="pie">
                     <p>LIGA 1</p>
@@ -32,8 +32,8 @@
 
             <div class="galeria">
                 <div class="imagenes">
-                    <a href="~/SerireA/Index">
-                        <img src="~/img/SERIEA.png" alt="">
+                    <a href="/SerireA/Index">
+                        <img src="wwwroot/images/SERIEA.png" alt="">
                     </a>
 
                 </div>
@@ -49,8 +49,8 @@
 
             <div class="galeria">
                 <div class="imagenes">
-                    <a href="~/LigaEspañola/Index">
-                        <img src="~/imagenes/laliga.png" alt="">
+                    <a href="/LaLiga/Index">
+                        <img src="wwwroot/images/laliga.png" alt="">
                     </a>
 
                 </div>
@@ -67,8 +67,8 @@
 
             <div class="galeria">
                 <div class="imagenes">
-                    <a href="~/Bundes/Index">
-                        <img src="~/imagenes/bundesliga.jpg" alt="">
+                    <a href="/BundesLiga/index">
+                        <img src="wwwroot/images/BUNDESLIGA.png" alt="">
                     </a>
 
                 </div>
@@ -83,8 +83,8 @@
 
             <div class="galeria">
                 <div class="imagenes">
-                    <a href="~/Premier/Index">
-                        <img src="~/imagenes/premier.jpg" alt="">
+                    <a href="/PremierLigue/Index">
+                        <img src="wwwroot/images/PREMIER.png" alt="">
                     </a>
 
                 </div>
