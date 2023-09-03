@@ -1,17 +1,23 @@
-<%-- 
-    Document   : select
-    Created on : 30 ago 2023, 8:41:00
-    Author     : MINEDUCYT
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page import="ProyectoFutbol.entidadesdenegocio.BundesLiga" %>
+<%@page import="ProyectoFutbol.accesoadatos.BundesLigaDAL" %>
+<%@page import="java.util.ArrayList" %>
+<% ArrayList<BundesLiga> bundesLigas = BundesLigaDAL.obtenerTodos();
+   int id = Integer.parseInt(request.getParameter("id"));
+%>
+<select id="slBundesLiga" name="idBundesLiga">
+    <option <%=(id == 0) ? "selected" : "" %> value="0">Seleccionar</option>
+    <%for(BundesLiga bundesLiga: bundesLigas)
+    {
+    %>
+    <option <%=(id==bundesLiga.getId()) ? "selected" : "" %>
+        value="<%=bundesLiga.getId()%>">
+         <%=bundesLiga.getIdLigas%>
+        <%=bundesLiga.getPosicion()%>
+         <%=bundesLiga.getEquipo()%>
+          <%=bundesLiga.getPuntos()%>
+    </option>
+    <%
+    }%>
+</select>
+<label for="slBundesLiga">BundesLiga</label>
