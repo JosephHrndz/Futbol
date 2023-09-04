@@ -12,17 +12,19 @@
         <title>Ligas</title>
     </head>
     <body>
-        <h1>¡Explora nuestras ligas y descubre todo lo que el mundo del fútbol tiene para ofrecer!</h1>
-        
+        <h1>¡Explora nuestras ligas y descubre todo lo que 
+            <br>
+            el mundo del fútbol tiene para ofrecer!</h1>
+          
           <div class="galeria">
             <div class="imagenes">
-                <a href="/Ligue1/Index">
-                    <img src="wwwroot/images/LIGUE1.png">
+                <a href="Ligue1/Index">
+                    <img src="wwwroot/images/LIGUE1.png" alt="">
                 </a>
             </div>
                 <div class="pie">
    
-                    <p>LIGUE1</p>
+                   <h3 style="color:black">LIGUE1</h3>
 
                 </div>
 
@@ -32,12 +34,12 @@
               <div class="galeria">
             <div class="imagenes">
                 <a href="/SerireA/Index">
-                    <img src="wwwroot/images/SERIEA.png">
+                    <img src="wwwroot/images/SERIEA.png" alt="">
                 </a>
             </div>
                 <div class="pie">
    
-                    <p>SERIE A</p>
+                <h3 style="color:black">SERIE A</h3>
 
                 </div>
 
@@ -48,12 +50,12 @@
                <div class="galeria">
             <div class="imagenes">
                 <a href="/BundesLiga/Index">
-                    <img src="wwwroot/images/bundes.png">
+                    <img src="wwwroot/images/bundes.png" alt="">
                 </a>
             </div>
                 <div class="pie">
    
-                    <p>BUNDESLIGA</p>
+                  <h3 style="color:black">BUNDES LIGUE</h3>
 
                 </div>
 
@@ -63,12 +65,12 @@
               <div class="galeria">
             <div class="imagenes">
                 <a href="/LaLiga/Index">
-                    <img src="wwwroot/images/laliga.png">
+                    <img src="wwwroot/images/laliga.png" alt="">
                 </a>
             </div>
                 <div class="pie">
    
-                    <p>LA LIGA</p>
+                     <h3 style="color:black ">LA LIGA</h3>
 
                 </div>
 
@@ -77,12 +79,12 @@
       <div class="galeria">
             <div class="imagenes">
                 <a href="/PremierLigue/Index">
-                    <img src="wwwroot/images/PREMIER.png">
+                    <img src="wwwroot/images/Premier.png" alt="">
                 </a>
             </div>
                 <div class="pie">
    
-                    <p>PREMIER LIGUE</p>
+                  <h3 style="color:black">PREMIERLEAGUE</h3>
 
                 </div>
 
@@ -90,7 +92,7 @@
 
             <style>
                 h1 {
-                    color: blue;
+                    color:lightslategray;
                     text-shadow: 1px 2px 2px black, 0 0 25px blue;
                     text-align: center;
                 }
