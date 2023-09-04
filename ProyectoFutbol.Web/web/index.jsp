@@ -17,7 +17,14 @@
         <title>Home</title>
 
     </head>
+    
     <body>
+          <style>
+    body {
+        background-color:#f8bbd0;
+    }
+    
+</style>
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container"> 
             <div class="row">
@@ -110,6 +117,55 @@ Los de Klopp tuvieron un plácido encuentro ante los 'villanos'</p>
     </div>
   </div> 
                 </div>
+                    <div class="card small">
+    <div class="col s12 m7">
+    <h5 class="header">AMERICA</h5>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="wwwroot/images/Victor.jpg">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+            <p>Vitor Roque no falla: ¡3 partidos seguidos marcando!
+El brasileño suma 20 goles y 8 asistencias en 41 partidos</p>
+            <br><!-- comment -->
+
+        </div>
+        <div class="card-action">
+          
+            </br>
+         <a href="#">Mas Info...</a>
+        </div>
+      </div>
+    </div>
+  </div> 
+                </div>
+                            
+                                                      <div class="card small">
+    <div class="col s12 m7">
+    <h5 class="header">LIGUE1-LIGA FRANCESA</h5>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="wwwroot/images/Embape.jpg">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+            <p>Mbappé inaugura la goleada de un PSG de fantasía
+Los de Luis Enrique barrieron al Olympique del Lyon desde el principio. El francés marcó un doblete</p>
+            <br><!-- comment -->
+
+        </div>
+        <div class="card-action">
+          
+            </br>
+         <a href="#">Mas Info...</a>
+        </div>
+      </div>
+    </div>
+  </div> 
+                </div>
+
+
             </div>            
         </main>
         <jsp:include page="/Views/Shared/footerBody.jsp" />      
